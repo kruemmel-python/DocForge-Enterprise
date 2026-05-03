@@ -1,0 +1,46 @@
+simulation:
+  time_step: 0.05
+  max_steps: 1000
+  gpu_index: 0
+  mode: auto
+  subqg:
+    grid_shape: [128, 128, 8]
+    energy_decay: 0.92
+    noise_level: 0.02
+    threshold: 0.15
+  mycelium:
+    colony_count: 12
+    pheromone_channels: 4
+    neighbor_degree: 6
+    nutrient_influx: 0.15
+    pheromone_decay: 0.81
+    diffusion_rate: 0.18
+    reinforcement_gains: [1.0, 0.8, 0.6, 0.4]
+    reproduction:
+      nutrient_threshold: 0.62
+      activity_threshold: 0.48
+      mutation_sigma: 0.06
+    feedback:
+      kappa_nutrient: 0.35
+      mood_weights: [0.6, 0.3, 0.15, 0.05]
+  cognition:
+    observation_interval: 5
+    harmony_threshold: 0.65
+    dissonance_threshold: 0.85
+    database:
+      retention: 96
+      noise_gain: 0.22
+      mood_gain: 0.5
+      agent_gain: 0.9
+      memory_snapshot_interval: 25
+      memory_snapshot_size: 3
+  quantum:
+    enabled: true
+    intuition_interval: 120
+    grover_iterations: 3
+    vqe_layers: 2
+paths:
+  driver_library_windows: .\\build\\CC_OpenCl.dll
+  driver_library_linux: ./build/libopencl_driver.so
+  driver_library_macos: ./build/libopencl_driver.dylib
+  visualization_assets: ./assets

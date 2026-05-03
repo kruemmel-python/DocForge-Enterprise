@@ -1,0 +1,18 @@
+:root { color-scheme: dark; }
+body { margin:0; font-family: system-ui, Segoe UI, sans-serif; background:#0f172a; color:#e5e7eb; }
+.shell { max-width: 1180px; margin: 0 auto; padding: 2rem; }
+header { margin-bottom: 1.5rem; }
+h1 { margin:0; font-size: 2rem; }
+.grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap:1rem; }
+.card { background:#111827; border:1px solid #334155; border-radius:18px; padding:1rem; margin:1rem 0; box-shadow:0 16px 40px rgba(0,0,0,.25); }
+.card b { display:block; color:#93c5fd; margin-bottom:.3rem; }
+.card span { font-size:1.2rem; }
+.finding.pass { border-left:8px solid #22c55e; }
+.finding.warn { border-left:8px solid #f59e0b; }
+.finding.fail { border-left:8px solid #ef4444; }
+.finding.skip,.finding.info { border-left:8px solid #38bdf8; }
+.gate.pass { color:#22c55e; }
+.gate.warn { color:#f59e0b; }
+.gate.fail { color:#ef4444; }
+pre { white-space:pre-wrap; overflow:auto; background:#020617; border-radius:12px; padding:1rem; }
+summary { cursor:pointer; color:#93c5fd; }

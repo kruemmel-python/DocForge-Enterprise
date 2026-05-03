@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.16)
+project(mycelia_gpu_envelope C)
+
+add_library(mycelia_gpu_envelope SHARED mycelia_gpu_envelope_contract.c)
+
+if (MSVC)
+    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded")
+    target_compile_options(mycelia_gpu_envelope PRIVATE /W4 /O2 /MT)
+    target_link_options(mycelia_gpu_envelope PRIVATE /MACHINE:X64)
+else()
+    target_compile_options(mycelia_gpu_envelope PRIVATE -Wall -Wextra -O2)
+    if(UNIX)
+        target_link_libraries(mycelia_gpu_envelope PRIVATE dl)
+    endif()
+endif()

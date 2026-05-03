@@ -1,0 +1,510 @@
+{
+  "note": "Sanitized MyceliaDB source subset bundled for offline inspection and embedded gateway compatibility. Secrets, databases, binaries, VCS, venvs and generated runtime state are excluded.",
+  "files": [
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/CC_OpenCL.c",
+      "sha256": "1b7a902fa0e37d6ce4a48522bb6f76d5ba40c9b249f3f883369cf1e94dda1161",
+      "bytes": 745440
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/CipherCore_NoiseCtrl.c",
+      "sha256": "d9ea3717c058a7cd9f5a65dc91e267e518d783a58d842ba48d06acad8e0c87ab",
+      "bytes": 1206
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/CipherCore_NoiseCtrl.h",
+      "sha256": "7f6649029d4e63fa13e43462490b1e494fe136d582bdaaca0d22276fcf8cbf58",
+      "bytes": 431
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/database.md",
+      "sha256": "d10921c391de849b4f82fb07c000d187808d1fdaa445038568f90d05229ecff0",
+      "bytes": 13728
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/README.md",
+      "sha256": "1f608ad883d9af34ee2f776d0a064d09976c027847c2b3334242cb8901dbeec9",
+      "bytes": 11530
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/SymBio_Interface.h",
+      "sha256": "bea8529a77b1cbddeb0a18ee3c9bf7507744af3920057e511794ece42301e369",
+      "bytes": 251
+    },
+    {
+      "path": "vendor/myceliadb_original/html/api.php",
+      "sha256": "e1db6f737b08dffc4411bf867c3b9466fa0108adbfde2e1002921f3c5df5da43",
+      "bytes": 1692
+    },
+    {
+      "path": "vendor/myceliadb_original/html/db_proxy.py",
+      "sha256": "6b6003e1efd20219e91edf06c76adbf0dfd7d3b2611813743899b74d64979a12",
+      "bytes": 3386
+    },
+    {
+      "path": "vendor/myceliadb_original/html/index.php",
+      "sha256": "4c04d12dfe22b7bfed5b9333ac20f899f84991025fc01c9e8e55b824a0d008ac",
+      "bytes": 5450
+    },
+    {
+      "path": "vendor/myceliadb_original/html/mycelia_chat_engine.py",
+      "sha256": "080f14022377991c009cb2e5249d8b792e90bebe678924d34c79d611634acb8b",
+      "bytes": 9670
+    },
+    {
+      "path": "vendor/myceliadb_original/html/mycelia_platform.py",
+      "sha256": "8c0df1cad84bdd4fbb7d31819601abf99fdc91f084c8850ad233fd10a9225da8",
+      "bytes": 416760
+    },
+    {
+      "path": "vendor/myceliadb_original/html/mycelia_web_mysql.py",
+      "sha256": "7fd0e85795e47bed7e0b54990c607da06ea4f73ad1dfd0a3474a6f404aa082b8",
+      "bytes": 13556
+    },
+    {
+      "path": "vendor/myceliadb_original/html/mycelia_web_server.py",
+      "sha256": "86b34adfa68ceb955cef7a60dc65c76b808b1f6a1456fa2cd358f38acb206f82",
+      "bytes": 428
+    },
+    {
+      "path": "vendor/myceliadb_original/html/mycelia_web_shop.py",
+      "sha256": "54d039ac1a4dab259bf4ceff016d9f6844169f3527d8699a93d57c9d146a9f46",
+      "bytes": 4393
+    },
+    {
+      "path": "vendor/myceliadb_original/html/ordnerbaum.txt",
+      "sha256": "38370c3f851fc7e3f3cdbaca50a853734e097aa233423b844c76737c550920a0",
+      "bytes": 15726
+    },
+    {
+      "path": "vendor/myceliadb_original/html/profile.php",
+      "sha256": "efc19919c3a07ef3e2b3c0b59e3125738faf4725a14f8769d99e77d29644ddc9",
+      "bytes": 4308
+    },
+    {
+      "path": "vendor/myceliadb_original/html/setup_db.php",
+      "sha256": "dbbf9cf7d4f558f400b63f51ed5141bbfff1e3d0a673d2a7e1dd26e29c1e35a9",
+      "bytes": 516
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/1README.md",
+      "sha256": "6e136a355d7484e72c56e42307b56c6b43d2d04dcd96f99bf59190c3cdaaa312",
+      "bytes": 3998
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/HOTFIX_2_0_5_NOTES.md",
+      "sha256": "aaeb09e5bbcb2689ee1121e3939fd788e035be3d015c4abe77820630f57b9fea",
+      "bytes": 593
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/pyproject.toml",
+      "sha256": "765c4dd55702f9a33f8280c4d15725a64a2edc54f692e628b34f9ae2a9ef94f4",
+      "bytes": 510
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/README.md",
+      "sha256": "84e50fc5c67c547e155274783b6babb7cf55d90c4ad49ee5148ad696a94595cd",
+      "bytes": 1798967
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/run_all.ps1",
+      "sha256": "e6bb290fbda3665b73b3d56ff800218ac4b238a755c4c36e6a4d6ba342529812",
+      "bytes": 659
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/configs/rag_redteam_corpus.de.jsonl",
+      "sha256": "4bc1d48964f525232600066e48b4c49db5622fc31e5c12d07b74f4db610e6dbf",
+      "bytes": 1409
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/configs/targets.example.toml",
+      "sha256": "cb61ebf8940996ea5fb7500b31548ea00297e634e3ef79f55ca3900d3e8f336b",
+      "bytes": 1001
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/docs/CONTROLS_MATRIX.md",
+      "sha256": "49d63d51472fd1ecf23118440bb09bf565a96eb535c4a580c211c4f9fa77bf18",
+      "bytes": 837
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/docs/FORENSIC_EVIDENCE_MODEL.md",
+      "sha256": "57b9ee56a6f208895029f3a8a57151240f4c66008d9655ca1a6cc5a990cb6ba9",
+      "bytes": 655
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/docs/PLAYBOOK.md",
+      "sha256": "1f082d7beef52f22ea79b87211d480430e378abd101d5a94c9f7efc5bf771ce5",
+      "bytes": 1043
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/docs/RAG_REDTEAM_GUIDE.md",
+      "sha256": "ea1394db2e9b562d2fbb60317c05ba41bfdaac4b8c1787e2cecdcfb1dd0081d8",
+      "bytes": 554
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/docs/THREAT_MODEL.md",
+      "sha256": "2e6d19dc6474dcfa0db80d1a334b9515edb6a04abace3c944bd4cbefae8aa90b",
+      "bytes": 978
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/docs/WEB_PANEL_INSTALL.md",
+      "sha256": "cc3fd301256fd0b6872258108cb7a1b170d62c17af39813e65a206172040d472",
+      "bytes": 491
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/reports/forensics_report.html",
+      "sha256": "e303a80177f2db55ad95eacf2e81d0ba1228b4ddad586aff5a0c48408fa793a7",
+      "bytes": 24124
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/reports/forensics_report.json",
+      "sha256": "27c880b2cc4a256908eceb09427f646294ffc1566b30a204c078a1d176ba06e4",
+      "bytes": 22729
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/reports/forensics_report.md",
+      "sha256": "d0a959f71deeff8ec9a4b40c9b366a26bc0e15f991ed3b0bec5e7c009c5764b6",
+      "bytes": 17081
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/reports/live_audit_evidence.json",
+      "sha256": "a381f439cafccfe2e808b8e142681c6df491bb31328d3c33e1947436ec88cfc9",
+      "bytes": 433677
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/tests/test_rag_eval.py",
+      "sha256": "482637673e3e33e12b95ef72ad279503def78ce826549c0a8925c786d061dc69",
+      "bytes": 723
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/tests/test_rehydration_audit.py",
+      "sha256": "5fff3ec532dfa7406055984cf84aaea37cf79aa8ee4029cf13da9d664cd4cd69",
+      "bytes": 894
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/tests/test_report_model.py",
+      "sha256": "f957210ec599f3a41a389489100f50e55060a239f0d116d6c38f11c192aa96f9",
+      "bytes": 736
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/tests/test_secret_scan.py",
+      "sha256": "84a2208d52d8fc246f0ea716e64d03c64d35034888b60c1b383aeafb3ce74cb3",
+      "bytes": 1664
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/tests/test_secret_scan_serialization.py",
+      "sha256": "80d12801d0052a471b721c73bc9701bd19553124cf558c9f43273565418129d0",
+      "bytes": 488
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/tests/test_v204_serialization.py",
+      "sha256": "bfd658d597bd422025fb51ad9c5dc735998b1a4d0739c751864ec32b54781a9b",
+      "bytes": 524
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/tools/diagnose_web_chat_api.ps1",
+      "sha256": "6f90622f52264ac4169e5c11780b21f7ce368f4b8971db1709b19bc01e9d86d1",
+      "bytes": 1034
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/tools/find_mycelia_pid.ps1",
+      "sha256": "3e79cc7c570eb3db16b1bf6c67326fd89af937f5f49e4a35c3a23781280a09ee",
+      "bytes": 136
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/tools/mycelia_security_forensics.py",
+      "sha256": "2584d405d3133ccf637c2db075a535741da5eda05f9413f4f37295dcd9375f70",
+      "bytes": 105
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/tools/run_live_ram_probe.ps1",
+      "sha256": "6b28d991404f208e2aaf36602bff7f36c0ab9404a262671f92acca6b9725720e",
+      "bytes": 1654
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/tools/run_restart_rehydration_test.ps1",
+      "sha256": "b35fa407814b97ba8aaf306ca493006fa385bdfa1fd4cae39cb0accc937dd5d8",
+      "bytes": 1077
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/tools/start_security_panel.ps1",
+      "sha256": "f3c2b6bfeaa98aa970d3035e9667834d267ce5249db0e369cbdca3ed9f8e99d5",
+      "bytes": 235
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/www/security_forensics_api.php",
+      "sha256": "b13e2cec8bf480e44e7628287f1d72d39ca7304af0bdfa393c5517f528ad1c76",
+      "bytes": 717
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/www/security_forensics_panel.php",
+      "sha256": "a729a7e49aac47a15b92832f229f7438f5644a6f958c2de94fbe6b1477d40dbb",
+      "bytes": 2290
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/www/assets/security-forensics.css",
+      "sha256": "147c96d8d64811cf374c61b755c6db8b4a8d7286a4d7d2ea039298ceb91a687e",
+      "bytes": 1035
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/src/myceliadb_security_forensics.egg-info/dependency_links.txt",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/src/myceliadb_security_forensics.egg-info/entry_points.txt",
+      "sha256": "312a27a7731560d50bab508bccb4bfbd84bc637f407e7b0b112ddfdc645f9097",
+      "bytes": 74
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/src/myceliadb_security_forensics.egg-info/PKG-INFO",
+      "sha256": "dc460f6f245c2044237087780251e3380546c4916d41843fd314daca54f82973",
+      "bytes": 267
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/src/myceliadb_security_forensics.egg-info/SOURCES.txt",
+      "sha256": "73760d92a60d40abd48705fa033faa021d696769b6c018998880cc856e091d3a",
+      "bytes": 1001
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/src/myceliadb_security_forensics.egg-info/top_level.txt",
+      "sha256": "ed56145f4e639300f0fb1908b540bf246e34d7a27e5e5e17021a742beb0e6a6d",
+      "bytes": 27
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/src/mycelia_security_forensics/checks.py",
+      "sha256": "bfaa160af27dcb42afa60d249a8ffe89f59d7739e1bff4303594bfd963237499",
+      "bytes": 19821
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/src/mycelia_security_forensics/cli.py",
+      "sha256": "5499c83f81f43fe718851f87a6c217c852ad1c2a4a56036810090f292ae86e53",
+      "bytes": 3051
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/src/mycelia_security_forensics/config.py",
+      "sha256": "33e0096c9b8bfdd7f734ca8c5242a0962d5b942c14a85503801c97025c05d269",
+      "bytes": 2835
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/src/mycelia_security_forensics/findings.py",
+      "sha256": "dc3cb51045e3af93d50a7c88913dffe5c334dc85a22b967ce2747acbc37b6402",
+      "bytes": 2830
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/src/mycelia_security_forensics/http_client.py",
+      "sha256": "9e82cce30f7b3ebe4f0cb1f8d7876823aaeafa5f6e2a7302596cc5b395050c28",
+      "bytes": 1871
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/src/mycelia_security_forensics/rag_eval.py",
+      "sha256": "c8b749b32c803433ee3ac71ce9dfd2610abc5c9c9c945a4552f049a702cb02ee",
+      "bytes": 2712
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/src/mycelia_security_forensics/rehydration.py",
+      "sha256": "b8b808190f0c8bf8a84005af661ebd97ad4bec988bfbcf08c1f0e172401f73c6",
+      "bytes": 1930
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/src/mycelia_security_forensics/report.py",
+      "sha256": "c560773432b37b0226d0bb7408e2559edcff5e0546cc13169bac03132c512576",
+      "bytes": 4347
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/src/mycelia_security_forensics/secret_scan.py",
+      "sha256": "df33c17957bfc3a0ed7e2b5376daf4e2d2a299f5e93e5f3561b17ba25747a104",
+      "bytes": 5764
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/src/mycelia_security_forensics/subproc.py",
+      "sha256": "1dddf13f9ea79431b070d4feb7ffeef6400170697d05d4c647ded8a428538984",
+      "bytes": 930
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/src/mycelia_security_forensics/__init__.py",
+      "sha256": "c446fb6786fcc5a9575c4c41838d973c085b24a9e21f372c10f8e9fba4b7a698",
+      "bytes": 22
+    },
+    {
+      "path": "vendor/myceliadb_original/MyceliaDB_Security_Forensics_Suite_Enterprise/src/mycelia_security_forensics/__main__.py",
+      "sha256": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4",
+      "bytes": 47
+    },
+    {
+      "path": "vendor/myceliadb_original/html/docs/V1_22C_VECTOR_RAM_PROBE.md",
+      "sha256": "3869244aa5a84bd60a4efb4f839dd864e12eab0f2c023365f14b461d618a8346",
+      "bytes": 3896
+    },
+    {
+      "path": "vendor/myceliadb_original/html/native/build_native_gpu_envelope.ps1",
+      "sha256": "991c054d2ec04a40cc31ca2932142534ea7743fb02c2fb0cb394b2e6c8dd838a",
+      "bytes": 4671
+    },
+    {
+      "path": "vendor/myceliadb_original/html/native/CMakeLists.txt",
+      "sha256": "96c22369be770f1db32b95d4e9fe1616fe3e07d9900a5f0dcd65d1a68147d206",
+      "bytes": 520
+    },
+    {
+      "path": "vendor/myceliadb_original/html/native/mycelia_gpu_envelope_contract.c",
+      "sha256": "d5ac8f14dcc961760f026362392c4005d80a85f07be142dd82d49876c3ce26ef",
+      "bytes": 32663
+    },
+    {
+      "path": "vendor/myceliadb_original/html/tests/test_memory_probe_vector_fragments.py",
+      "sha256": "2a3dd01465dc2c2a8f739ec900da1eebc6cadd64f974bc83b740ee0074414fe6",
+      "bytes": 5012
+    },
+    {
+      "path": "vendor/myceliadb_original/html/tools/mycelia_memory_probe.py",
+      "sha256": "01b069fbca53d14ed35fc6aed77d7263b93503577cf726fdb6999b5130b0ceec",
+      "bytes": 40966
+    },
+    {
+      "path": "vendor/myceliadb_original/html/tools/probe_during_smql.cmd",
+      "sha256": "0e76131da240114103e64ae5cf3756bfa105e52c243d6ce83eaaae44d642c16b",
+      "bytes": 455
+    },
+    {
+      "path": "vendor/myceliadb_original/html/tools/run_v122c_vector_search_ram_probe.ps1",
+      "sha256": "206c4226c1889a65a221be85333f21384338e30ae7cbb2d1a1ab1563a0be065c",
+      "bytes": 1689
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/exports/arbeitslosenzahlen_arbeitsmarktstatistik.sql",
+      "sha256": "060fb9795a8a9441391fc6abbd8a3969b55ec5f1b584a4dd4afcf4efdc61796a",
+      "bytes": 3017
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/exports/arbeitslosenzahlen_frueheresbundesgebiet.sql",
+      "sha256": "5f075ad07a01437161e8aaabb79216ab40cf7e256dcd26de8d711e49c2e50d31",
+      "bytes": 3673
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/exports/arbeitslosenzahlen_meine_tabelle.sql",
+      "sha256": "bf9c671a618dac25eba9e31309472056ca4a5221f0514e89b4f60f3a828653d7",
+      "bytes": 2090
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/exports/arbeitslosenzahlen_neuelaender.sql",
+      "sha256": "5933c51ff21fd957cf029881bddbc8d3338c65498147530f4fba636f31de9d85",
+      "bytes": 3574
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/exports/arbeitslosenzahlen_routines.sql",
+      "sha256": "b7672aa86a8e95b5446f04c983a71d1373c5c6343afabf4c2a2a986c7e26b74d",
+      "bytes": 1414
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/exports/customers.sql",
+      "sha256": "9fbb81c5e329f3410d43567e16ae2658eb0b7cec66702d74ee2a8b98b1ca79fa",
+      "bytes": 3017
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/mycelia_ai/config.yaml",
+      "sha256": "50a24502dbca221e85af8d031bfbb1c30f0ce6648f864765fe0828be61ce8b09",
+      "bytes": 1138
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/mycelia_ai/import_sql.py",
+      "sha256": "cc577e81ee5135567f1dd66a11ccb8279fa4ea6ad4311883627b954707047438",
+      "bytes": 3383
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/mycelia_ai/main.py",
+      "sha256": "367ad40906f4449818da22fb7ba6d59f64d92679c0b7bc3d0c692c739242b8b0",
+      "bytes": 3579
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/mycelia_ai/query_sql.py",
+      "sha256": "a8f0d43a8b14781817ff43eb59a7c4be4596ebac847ef20c48ea523ad701425d",
+      "bytes": 3552
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/mycelia_ai/streamlit_app.py",
+      "sha256": "4fb532d859a6d36b7dd253dd2d967d5bb3f44df52b8851411a47e55bda73d0ef",
+      "bytes": 11540
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/mycelia_ai/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/mycelia_ai/cognition/cognitive_core.py",
+      "sha256": "ecf47e453812e59f4d2c42e0632e73cd0cec82ec1386776155646d85f48cbeaf",
+      "bytes": 14026
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/mycelia_ai/cognition/dynamic_database.py",
+      "sha256": "46e9c5d446f147b9fb9bbf3e039ccb1593a0e39760514c13a9b5052ab8eb85b4",
+      "bytes": 26914
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/mycelia_ai/cognition/observer_net.py",
+      "sha256": "177f9841000892e1eaf62e3155a5b6371f28474f5f8764f55fa08c586867db62",
+      "bytes": 1878
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/mycelia_ai/cognition/__init__.py",
+      "sha256": "fed1c713110a2788ec5a2ff7fd165060cd8cdcd81a43cfc11cda92d87549ac39",
+      "bytes": 376
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/mycelia_ai/core/driver.py",
+      "sha256": "fa8255bb4459290e0e1180e0f24130bf07bc4708a1e22cb436abb5d68a362203",
+      "bytes": 26180
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/mycelia_ai/core/gpu_tensor.py",
+      "sha256": "79d5408b80f4682bb4713b4a10d52e945db15bdfa8dedf9a8912325c508cb975",
+      "bytes": 1625
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/mycelia_ai/core/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/mycelia_ai/io/sql_importer.py",
+      "sha256": "7be68624a8c61016eb3288b4b46c44ae4eff331dbf3224791ef88bd5fd6ee1b3",
+      "bytes": 10178
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/mycelia_ai/io/__init__.py",
+      "sha256": "9df3e41dbe788b8285bd73a8de46090f60b560db4605660449b6e3985cfb031e",
+      "bytes": 224
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/mycelia_ai/simulation/mycelia_world.py",
+      "sha256": "df79069fc68eafa1fc3913b5aa7c7ee784098e9114ed39c18660140084414c21",
+      "bytes": 20174
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/mycelia_ai/simulation/quantum_oracle.py",
+      "sha256": "ce0d56911b557efd7794e0bc833703ab7bb02938d7ae3d812fd5e13999ed367e",
+      "bytes": 2064
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/mycelia_ai/simulation/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/mycelia_ai/visualization/renderer.py",
+      "sha256": "bab155bd8b15bb02a4dbb54cbbe3d893e6b7de1e287d47e8726216e6c2686945",
+      "bytes": 838
+    },
+    {
+      "path": "vendor/myceliadb_original/Mycelia_Database-main/mycelia_ai/visualization/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  ]
+}

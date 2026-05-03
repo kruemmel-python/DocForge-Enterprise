@@ -1,0 +1,32 @@
+[targets]
+adapter_url = "http://127.0.0.1:8765"
+mycelia_url = "http://127.0.0.1:9999"
+lmstudio_url = "http://127.0.0.1:1234"
+
+# Auto sucht u. a.:
+# - http://127.0.0.1:8081/lmstudio_chat_api.php
+# - http://127.0.0.1:8081/www/lmstudio_chat_api.php
+# - http://127.0.0.1:8080/lmstudio_chat_api.php
+# - http://127.0.0.1:8080/www/lmstudio_chat_api.php
+web_chat_api = "auto"
+
+token_file = "C:\\MyceliaDB\\html\\keys\\local_transport.token"
+adapter_root = "C:\\MyceliaDB\\SMQL-Embedding-Adapter"
+mycelia_root = "C:\\MyceliaDB\\html"
+collection = "demo"
+chat_model = "google_gemma-4-e4b-it"
+embedding_model = "text-embedding-nomic-embed-text-v2-moe"
+reports_dir = "reports"
+
+[policy]
+require_mycelia_backend = true
+require_opencl_vram = true
+min_sources = 1
+rag_limit = 5
+http_timeout_seconds = 8.0
+scan_max_file_mb = 5
+redteam_corpus = "configs/rag_redteam_corpus.de.jsonl"
+
+# false: Webroot-Probleme blockieren das Enterprise Gate nicht,
+# solange Adapter-Level-RAG gesund ist.
+web_chat_api_required = false
