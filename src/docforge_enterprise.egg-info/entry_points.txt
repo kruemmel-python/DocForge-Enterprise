@@ -1,0 +1,6 @@
+[console_scripts]
+dfe = docforge_enterprise.cli:main
+dfe-web = docforge_enterprise.webgui:main
+docforge-enterprise = docforge_enterprise.cli:main
+docforge-webgui = docforge_enterprise.webgui:main
+embedded-myceliadb = myceliadb_embedded.cli:main

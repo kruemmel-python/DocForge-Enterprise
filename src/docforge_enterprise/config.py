@@ -15,9 +15,9 @@ class MyceliaSettings:
 class PipelineSettings:
     workspace:Path=Path(".docforge_workspace"); max_chars_per_shard:int=2500; min_chars_per_shard:int=1000; shard_overlap:int=300
     retrieval_limit:int=6; batch_size:int=8; max_embedding_batch_size:int=4; analysis_workers:int=1; max_analysis_workers:int=2
-    dry_run:bool=False; force_rebuild:bool=False; emit_html:bool=True; emit_json:bool=True; project_name:str=""
+    dry_run:bool=False; force_rebuild:bool=False; emit_html:bool=True; emit_json:bool=True; project_name:str=""; output_language:str="de"
     profile:str="balanced"; chapters:str=""; single_pass_final:bool=False; disable_module_reduce:bool=False; max_final_chapters:int=0; estimate_only:bool=False
-    checkpoint_every:int=1; adaptive_shard_on_timeout:bool=True; continue_on_timeout:bool=True
+    checkpoint_every:int=1; adaptive_shard_on_timeout:bool=True; continue_on_timeout:bool=True; fail_on_missing_shards:bool=True; integrity_debug:bool=True
 @dataclass(slots=True)
 class SecuritySettings:
     max_file_bytes:int=2_000_000; block_secret_files:bool=True; block_vendor_dirs:bool=True; allow_binary:bool=False; redact_secrets:bool=True; fail_on_zip_slip:bool=True
@@ -50,6 +50,7 @@ class Settings:
         if os.getenv("LMSTUDIO_BASE_URL"): self.lmstudio.base_url=os.environ["LMSTUDIO_BASE_URL"]
         if os.getenv("LMSTUDIO_CHAT_MODEL"): self.lmstudio.chat_model=os.environ["LMSTUDIO_CHAT_MODEL"]
         if os.getenv("LMSTUDIO_EMBEDDING_MODEL"): self.lmstudio.embedding_model=os.environ["LMSTUDIO_EMBEDDING_MODEL"]
+        if os.getenv("DOCFORGE_OUTPUT_LANGUAGE"): self.pipeline.output_language=os.environ["DOCFORGE_OUTPUT_LANGUAGE"]
         if os.getenv("MYCELIA_BASE_URL"): self.mycelia.base_url=os.environ["MYCELIA_BASE_URL"]
         tok=os.getenv(self.mycelia.token_env,"")
         if tok and not self.mycelia.token: self.mycelia.token=tok

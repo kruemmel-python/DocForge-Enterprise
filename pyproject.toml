@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "docforge-enterprise"
-version = "5.0.1"
-description = "Local-first enterprise documentation generator with LM Studio, embedded MyceliaDB, audit validation and hardened WebGUI."
+version = "5.0.8"
+description = "Local-first enterprise documentation generator with LM Studio, embedded MyceliaDB, audit validation and hardened professional WebGUI and pipeline integrity checks."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = ["numpy>=1.26"]

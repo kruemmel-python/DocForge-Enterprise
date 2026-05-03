@@ -1,10 +1,10 @@
 from __future__ import annotations
 import json
 from .models import CodeShard, RetrievedContext
-SHARD_SYSTEM="Du bist Senior Software Architect. Antworte ausschließlich als valides JSON mit purpose, important_symbols, dependencies, business_rules, interfaces, security_notes, operations_notes, risks, documentation_notes, evidence."
-FILE_SYSTEM="Verdichte Shard-Analysen zu Datei-Dokumentation. Antworte nur JSON."
-MODULE_SYSTEM="Verdichte Datei-Zusammenfassungen zu Modul-Dokumentation. Antworte nur JSON."
-CHAPTER_SYSTEM="Du bist Principal Enterprise Architect. Schreibe professionelle deutschsprachige Markdown-Dokumentation. Markiere unbelegte Aussagen."
+SHARD_SYSTEM="You are a Senior Software Architect. Return only valid JSON with purpose, important_symbols, dependencies, business_rules, interfaces, security_notes, operations_notes, risks, documentation_notes, evidence. Follow the requested output language for all natural-language values."
+FILE_SYSTEM="Reduce shard analyses into file documentation. Return JSON only. Follow the requested output language for all natural-language values."
+MODULE_SYSTEM="Reduce file summaries into module documentation. Return JSON only. Follow the requested output language for all natural-language values."
+CHAPTER_SYSTEM="You are a Principal Enterprise Architect. Write professional Markdown documentation. Follow the requested output language. Mark unsupported claims explicitly."
 def _ctx(ctxs:list[RetrievedContext], n:int=1600)->str:
     return "\n\n".join(f"CONTEXT {i} FILE={c.file_path} SCORE={c.score}\n{c.text[:n]}" for i,c in enumerate(ctxs,1))
 def shard_prompt(s:CodeShard, ctxs:list[RetrievedContext])->str:

@@ -22,3 +22,4 @@ class PipelineStats:
     checkpoint_writes:int=0; embedding_failures:int=0; estimated_llm_chat_calls:int=0; estimated_embedding_calls:int=0
     actual_llm_chat_calls:int=0; actual_embedding_calls:int=0
     claims_total:int=0; claims_supported:int=0; claims_unsupported:int=0; evidence_coverage_percent:float=0.0
+    integrity_errors:int=0; files_without_shard_analysis:int=0

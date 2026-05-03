@@ -65,6 +65,8 @@ explain_llm_calls = true
 checkpoint_every = 1
 adaptive_shard_on_timeout = true
 continue_on_timeout = true
+fail_on_missing_shards = true
+integrity_debug = true
 chapter_context_file_limit = 80
 chapter_context_module_limit = 40
 

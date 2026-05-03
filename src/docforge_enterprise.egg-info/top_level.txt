@@ -1,0 +1,3 @@
+docforge_enterprise
+myceliadb_embedded
+smql_embedding_adapter
