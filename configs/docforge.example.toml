@@ -1,0 +1,82 @@
+[lmstudio]
+base_url = "http://127.0.0.1:1234/v1"
+chat_model = "local-model"
+embedding_model = "text-embedding-nomic-embed-text-v1.5"
+
+# Backward-compatible global timeout.
+timeout_seconds = 180
+
+# v0.3 explicit request budgets for local LM Studio / MyceliaDB.
+chat_timeout_seconds = 300
+embedding_timeout_seconds = 180
+gateway_timeout_seconds = 120
+final_timeout_seconds = 600
+request_retries = 3
+retry_backoff_seconds = 2.0
+
+temperature = 0.1
+max_json_tokens = 1200
+max_chapter_tokens = 3500
+json_repair_attempts = 1
+
+[mycelia]
+enabled = true
+base_url = "http://127.0.0.1:9999"
+token = ""
+token_env = "MYCELIA_LOCAL_TOKEN"
+vault_path = ".docforge_workspace/mycelia_vault"
+collection_prefix = "docforge"
+search_backend = "auto"
+sealed_mode = "auto"
+store_text = true
+default_dimension = 768
+
+[pipeline]
+workspace = ".docforge_workspace"
+max_chars_per_shard = 3500
+min_chars_per_shard = 1200
+shard_overlap = 400
+retrieval_limit = 8
+batch_size = 16
+max_embedding_batch_size = 8
+analysis_workers = 1
+max_analysis_workers = 2
+dry_run = false
+force_rebuild = false
+emit_html = true
+emit_markdown = true
+emit_json = true
+project_name = ""
+
+# v0.5 profile controls.
+# quick | balanced | enterprise
+profile = "enterprise"
+# Optional comma-separated chapter override, e.g.
+# chapters = "Executive Summary,Systemüberblick,Sicherheitsbetrachtung"
+chapters = ""
+single_pass_final = false
+disable_module_reduce = false
+max_final_chapters = 0
+estimate_only = false
+explain_llm_calls = true
+
+
+# v0.3 resilience controls.
+checkpoint_every = 1
+adaptive_shard_on_timeout = true
+continue_on_timeout = true
+chapter_context_file_limit = 80
+chapter_context_module_limit = 40
+
+[security]
+max_file_bytes = 2000000
+block_secret_files = true
+block_vendor_dirs = true
+allow_binary = false
+redact_secrets = true
+fail_on_zip_slip = true
+
+# Embedded MyceliaDB can be started by CLI with:
+# docforge-enterprise project.zip --embedded-mycelia
+# The persistent embedded vault defaults to:
+# .docforge_workspace/embedded_myceliadb
