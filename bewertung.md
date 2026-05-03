@@ -362,12 +362,3 @@ Eine sachlich präzise Gesamtbewertung wäre:
 
 > DocForge Enterprise v5.0.0 ist ein technisch ambitioniertes und bereits sehr fortgeschrittenes local-first Framework für LLM-gestützte Software-Dokumentation. Seine Stärke liegt im mehrstufigen, auditierbaren Analysemodell mit Sharding, Embeddings, Retrieval, Reduktion und profilgesteuerter Dokumentationstiefe. Es ist deutlich mehr als ein klassischer Dokumentationsgenerator. Für eine endgültige Enterprise-Grade-Einstufung fehlen jedoch noch systematische Benchmarks, Security-Härtung der WebGUI, belastbare Langläufe auf großen Repositories, Claim-Validation und ein stabiler Release-Prozess.
 
-Kurz:
-
-```text
-Gemini hat im Kern recht.
-Die Architektur ist stark.
-Die Bewertung ist aber etwas zu euphorisch formuliert.
-DocForge ist ein sehr starkes System mit hohem Enterprise-Potenzial,
-aber noch nicht in jeder Hinsicht „absolut“ oder final produktionsgehärtet.
-```
