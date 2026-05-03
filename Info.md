@@ -1,11 +1,12 @@
-# DocForge Enterprise — System Intelligence & Audit Model
+# DocForge Enterprise — System Intelligence, Audit & Secure WebGUI Model
+
 <img width="853" height="480" alt="DocForge_Enterprise_Blueprint" src="https://github.com/user-attachments/assets/377e4a0d-1e4c-4807-8584-8825a57230f3" />
 
 DocForge Enterprise is a local-first framework for generating professional, evidence-oriented software documentation from source code projects, ZIP archives, Markdown code dumps and local repositories.
 
-Unlike simple documentation generators, DocForge does not send an entire project into a single prompt. It builds a structured analysis model through sharding, embeddings, semantic retrieval, staged reduction and profile-controlled documentation rendering.
+Unlike simple documentation generators, DocForge does not send an entire project into one large prompt. It builds a structured analysis model through language-aware sharding, embeddings, semantic retrieval, staged reduction, profile-controlled rendering, evidence validation and secure local operation.
 
-This document explains what happens internally, why multiple LLM and embedding calls may be required, how the documentation profiles work, and how to choose the right execution mode for small projects, large repositories and audit-oriented enterprise documentation.
+This document explains what happens internally, why multiple LLM and embedding calls may be required, how the documentation profiles work, how the multilingual WebGUI behaves, how audit integrity is enforced, and how to choose the correct execution mode.
 
 ---
 
@@ -19,6 +20,7 @@ Source Project
   -> Language-aware sharding
   -> Embedding and semantic indexing
   -> Shard-level LLM analysis
+  -> Pipeline integrity validation
   -> File-level reduction
   -> Module-level reduction
   -> Evidence and claim validation
@@ -26,7 +28,7 @@ Source Project
   -> Markdown, HTML, JSON, SQLite and audit artifacts
 ```
 
-The goal is not only to produce readable documentation. The goal is to create a traceable knowledge model from source code, intermediate summaries, evidence records and metadata.
+The goal is not only to produce readable documentation. The goal is to create a traceable knowledge model from source code, intermediate summaries, evidence records, run metadata and validation artifacts.
 
 This design is especially useful for local LLM environments, where context windows, latency and hardware capacity are limited.
 
@@ -51,12 +53,13 @@ A typical enterprise analysis may include:
 2. Split files into semantic shards
 3. Embed every shard
 4. Analyze each shard
-5. Summarize each file
-6. Summarize each module
-7. Retrieve relevant context for final chapters
-8. Render the final documentation
-9. Validate evidence coverage
-10. Write audit metadata
+5. Validate that shard analyses exist for every file
+6. Summarize each file
+7. Summarize each module
+8. Retrieve relevant context for final chapters
+9. Render the final documentation
+10. Validate evidence coverage
+11. Write audit metadata
 ```
 
 For a small sample project this can feel excessive. For large repositories it prevents context overflow, missing files and shallow documentation.
@@ -182,9 +185,61 @@ At this stage, the LLM is not writing the final documentation. It is extracting 
 
 ---
 
-## 6. File-Level Reduction
+## 6. Pipeline Integrity Between Stages
 
-After shard analysis, DocForge combines all shard analyses for a file into one file-level summary.
+DocForge performs integrity checks between analysis stages so later prompts do not silently run on missing intermediate data.
+
+A critical integrity rule is:
+
+```text
+File-level reduction must not run with empty shard analyses.
+```
+
+The system checks:
+
+```text
+file_path
+expected shard IDs
+stored shard analysis records
+number of analyses found per file
+```
+
+A healthy run should show diagnostics similar to:
+
+```text
+[DocForge][Integrity] stage=post-shard file=README.md expected_shards=1 shard_analyses_found=1 status=ok
+[DocForge][Integrity] stage=post-shard file=src/app.py expected_shards=2 shard_analyses_found=2 status=ok
+[DocForge][Integrity] stage=post-shard file=src/auth.py expected_shards=1 shard_analyses_found=1 status=ok
+```
+
+This prevents weak prompts such as:
+
+```text
+Keine Shard-Analysen verfügbar.
+```
+
+or:
+
+```text
+No shard analyses available.
+```
+
+from becoming the basis for final documentation.
+
+Integrity artifacts can include:
+
+```text
+analysis/pipeline_integrity_report.json
+run_metadata.json -> pipeline_integrity_report
+```
+
+By default, missing shard analyses are treated as an integrity failure. A fallback mode can be enabled for debugging, but it is not recommended for audit-quality output.
+
+---
+
+## 7. File-Level Reduction
+
+After shard analysis and integrity validation, DocForge combines all shard analyses for a file into one file-level summary.
 
 Example:
 
@@ -214,7 +269,7 @@ This makes later stages more efficient because they work on structured summaries
 
 ---
 
-## 7. Module-Level Reduction
+## 8. Module-Level Reduction
 
 Files are grouped into modules.
 
@@ -242,7 +297,7 @@ This is especially useful for larger repositories with many directories and subs
 
 ---
 
-## 8. Final Documentation Rendering
+## 9. Final Documentation Rendering
 
 The final documentation can be rendered in two main ways.
 
@@ -301,7 +356,7 @@ This produces more LLM calls but improves depth, structure and stability for ent
 
 ---
 
-## 9. Documentation Profiles
+## 10. Documentation Profiles
 
 DocForge provides three documentation profiles so the analysis depth can match the project size and objective.
 
@@ -330,7 +385,7 @@ fast feedback
 Recommended command:
 
 ```powershell
-$env:MYCELIA_LOCAL_TOKEN=(python -c "import secrets; print(secrets.token_urlsafe(32))"); docforge-enterprise "D:\docforge_enterprise_new\examples\sample_project.zip" --profile quick --chat-model google_gemma-4-e4b-it --embedding-model text-embedding-nomic-embed-text-v2-moe --embedded-mycelia --analysis-workers 1 --chat-timeout 600 --embedding-timeout 300 --gateway-timeout 180 --max-chars-per-shard 2500 --max-embedding-batch-size 4 --analysis-max-tokens 900 --llm-retries 3 --force-rebuild
+$env:MYCELIA_LOCAL_TOKEN=(python -c "import secrets; print(secrets.token_urlsafe(32))"); docforge-enterprise "D:\docforge_enterprise_new\examples\sample_project.zip" --language en --profile quick --chat-model google_gemma-4-e4b-it --embedding-model text-embedding-nomic-embed-text-v2-moe --embedded-mycelia --analysis-workers 1 --chat-timeout 600 --embedding-timeout 300 --gateway-timeout 180 --max-chars-per-shard 2500 --max-embedding-batch-size 4 --analysis-max-tokens 900 --llm-retries 3 --force-rebuild
 ```
 
 ### Balanced
@@ -358,7 +413,7 @@ good documentation depth
 Recommended command:
 
 ```powershell
-$env:MYCELIA_LOCAL_TOKEN=(python -c "import secrets; print(secrets.token_urlsafe(32))"); docforge-enterprise "D:\docforge_enterprise_new\examples\sample_project.zip" --profile balanced --chat-model google_gemma-4-e4b-it --embedding-model text-embedding-nomic-embed-text-v2-moe --embedded-mycelia --analysis-workers 1 --chat-timeout 600 --embedding-timeout 300 --gateway-timeout 180 --max-chars-per-shard 2500 --max-embedding-batch-size 4 --analysis-max-tokens 900 --llm-retries 3 --force-rebuild
+$env:MYCELIA_LOCAL_TOKEN=(python -c "import secrets; print(secrets.token_urlsafe(32))"); docforge-enterprise "D:\docforge_enterprise_new\examples\sample_project.zip" --language en --profile balanced --chat-model google_gemma-4-e4b-it --embedding-model text-embedding-nomic-embed-text-v2-moe --embedded-mycelia --analysis-workers 1 --chat-timeout 600 --embedding-timeout 300 --gateway-timeout 180 --max-chars-per-shard 2500 --max-embedding-batch-size 4 --analysis-max-tokens 900 --llm-retries 3 --force-rebuild
 ```
 
 ### Enterprise
@@ -389,12 +444,61 @@ maximum documentation depth
 Recommended command:
 
 ```powershell
-$env:MYCELIA_LOCAL_TOKEN=(python -c "import secrets; print(secrets.token_urlsafe(32))"); docforge-enterprise "D:\docforge_enterprise_new\examples\sample_project.zip" --profile enterprise --chat-model google_gemma-4-e4b-it --embedding-model text-embedding-nomic-embed-text-v2-moe --embedded-mycelia --analysis-workers 1 --chat-timeout 600 --embedding-timeout 300 --gateway-timeout 180 --max-chars-per-shard 2500 --max-embedding-batch-size 4 --analysis-max-tokens 900 --llm-retries 3 --force-rebuild
+$env:MYCELIA_LOCAL_TOKEN=(python -c "import secrets; print(secrets.token_urlsafe(32))"); docforge-enterprise "D:\docforge_enterprise_new\examples\sample_project.zip" --language en --profile enterprise --chat-model google_gemma-4-e4b-it --embedding-model text-embedding-nomic-embed-text-v2-moe --embedded-mycelia --analysis-workers 1 --chat-timeout 600 --embedding-timeout 300 --gateway-timeout 180 --max-chars-per-shard 2500 --max-embedding-batch-size 4 --analysis-max-tokens 900 --llm-retries 3 --force-rebuild
 ```
 
 ---
 
-## 10. Estimate-Only Mode
+## 11. Multilingual Output
+
+DocForge can control the language of the generated documentation and LLM analysis output.
+
+Supported language options:
+
+```text
+de -> German
+en -> English
+```
+
+CLI examples:
+
+```powershell
+docforge-enterprise "D:\docforge_enterprise_new\examples\sample_project.zip" --language de --profile quick --embedded-mycelia --force-rebuild
+```
+
+```powershell
+docforge-enterprise "D:\docforge_enterprise_new\examples\sample_project.zip" --language en --profile quick --embedded-mycelia --force-rebuild
+```
+
+When the language is changed:
+
+```text
+WebGUI labels switch to the selected language.
+LLM prompts request output in the selected language.
+Shard analysis follows the selected language.
+File summaries follow the selected language.
+Module summaries follow the selected language.
+Final documentation follows the selected language.
+run_metadata.json records the selected output language.
+```
+
+Code identifiers remain unchanged:
+
+```text
+file paths
+class names
+function names
+method names
+API symbols
+configuration keys
+environment variables
+```
+
+Only natural-language explanations, notes, risks and generated documentation text are translated.
+
+---
+
+## 12. Estimate-Only Mode
 
 Before investing local compute time, DocForge can estimate the amount of work.
 
@@ -422,12 +526,18 @@ Use this mode before running large repositories.
 
 ---
 
-## 11. Custom Chapter Selection
+## 13. Custom Chapter Selection
 
 You can restrict final documentation to selected chapters.
 
 ```powershell
-docforge-enterprise "D:\docforge_enterprise_new\examples\sample_project.zip" --profile balanced --chapters "Executive Summary,Systemüberblick,Sicherheitsbetrachtung" --embedded-mycelia --chat-model google_gemma-4-e4b-it --embedding-model text-embedding-nomic-embed-text-v2-moe --force-rebuild
+docforge-enterprise "D:\docforge_enterprise_new\examples\sample_project.zip" --language en --profile balanced --chapters "Executive Summary,System Overview,Security Analysis" --embedded-mycelia --chat-model google_gemma-4-e4b-it --embedding-model text-embedding-nomic-embed-text-v2-moe --force-rebuild
+```
+
+German example:
+
+```powershell
+docforge-enterprise "D:\docforge_enterprise_new\examples\sample_project.zip" --language de --profile balanced --chapters "Executive Summary,Systemüberblick,Sicherheitsbetrachtung" --embedded-mycelia --chat-model google_gemma-4-e4b-it --embedding-model text-embedding-nomic-embed-text-v2-moe --force-rebuild
 ```
 
 This reduces:
@@ -441,13 +551,14 @@ timeout risk
 
 ---
 
-## 12. WebGUI Execution Model
+## 14. Secure WebGUI Execution Model
 
 The WebGUI exposes the same key decisions as the CLI.
 
 Supported controls include:
 
 ```text
+language selection
 execution mode
 documentation profile
 custom chapter list
@@ -461,13 +572,14 @@ upload limit
 read-only mode
 authentication
 roles
+CSRF protection
 audit logging
 ```
 
 Start the WebGUI:
 
 ```powershell
-$env:MYCELIA_LOCAL_TOKEN=(python -c "import secrets; print(secrets.token_urlsafe(32))"); docforge-webgui --host 127.0.0.1 --port 7860 --max-upload-mb 100
+$env:MYCELIA_LOCAL_TOKEN=(python -c "import secrets; print(secrets.token_urlsafe(32))"); docforge-webgui --host 127.0.0.1 --port 7860 --root ".docforge_webgui" --max-upload-mb 100
 ```
 
 Open:
@@ -476,11 +588,80 @@ Open:
 http://127.0.0.1:7860
 ```
 
-The WebGUI is useful for local and team-oriented documentation workflows. For network-wide deployment, it should be operated behind appropriate enterprise controls such as TLS termination, reverse proxy hardening, rate limiting and access management.
+The WebGUI is useful for local and team-oriented documentation workflows.
+
+For network-wide deployment, operate it behind appropriate enterprise controls:
+
+```text
+TLS termination
+reverse proxy hardening
+rate limiting
+central access management
+backup and retention policy
+monitoring
+network isolation
+```
 
 ---
 
-## 13. Execution Modes
+## 15. WebGUI Authentication and Session Model
+
+The secure WebGUI provides registration, login and session handling.
+
+Key properties:
+
+```text
+first registered user becomes admin
+passwords are stored as PBKDF2-HMAC-SHA256 hashes
+sessions use HttpOnly cookies
+cookies use SameSite=Strict
+mutating requests use CSRF protection
+roles provide the foundation for admin/operator/viewer access
+audit logs record WebGUI actions
+```
+
+Typical first start:
+
+```powershell
+$env:MYCELIA_LOCAL_TOKEN=(python -c "import secrets; print(secrets.token_urlsafe(32))"); docforge-webgui --host 127.0.0.1 --port 7860 --root ".docforge_webgui" --max-upload-mb 100
+```
+
+Then open:
+
+```text
+http://127.0.0.1:7860
+```
+
+Expected flow:
+
+```text
+1. Session is checked.
+2. If no session exists, the login/registration screen appears.
+3. Register the first user.
+4. The first user becomes admin.
+5. Login.
+6. The full documentation dashboard becomes available.
+```
+
+Session boot hardening prevents the WebGUI from polling protected endpoints before authentication is resolved. This avoids login-loop behavior and prevents unnecessary server tracebacks when browsers abort polling requests.
+
+If the browser is stuck after an update:
+
+```text
+clear site data for 127.0.0.1
+or use a fresh port
+or use a private/incognito window
+```
+
+Example with a fresh port:
+
+```powershell
+$env:MYCELIA_LOCAL_TOKEN=(python -c "import secrets; print(secrets.token_urlsafe(32))"); docforge-webgui --host 127.0.0.1 --port 7864 --root ".docforge_webgui" --max-upload-mb 100
+```
+
+---
+
+## 16. Execution Modes
 
 DocForge supports multiple execution modes.
 
@@ -554,7 +735,7 @@ a dedicated service process is preferred
 
 ---
 
-## 14. Token Handling
+## 17. Token Handling
 
 `MYCELIA_LOCAL_TOKEN` is a local shared secret between DocForge and the embedded or external MyceliaDB-compatible gateway.
 
@@ -594,7 +775,7 @@ Never commit tokens to Git or include them in screenshots, logs or issue reports
 
 ---
 
-## 15. Audit and Evidence Model
+## 18. Audit and Evidence Model
 
 DocForge stores several artifacts to support traceability:
 
@@ -607,6 +788,7 @@ SQLite state
 vectorstore metadata
 ledger information
 run metadata
+pipeline integrity report
 audit validation output
 ```
 
@@ -633,7 +815,7 @@ For strict audits, reviewers should inspect generated claims, evidence coverage 
 
 ---
 
-## 16. Claim Validation and Evidence Coverage
+## 19. Claim Validation and Evidence Coverage
 
 DocForge can validate generated claims against original sources and intermediate artifacts.
 
@@ -641,6 +823,7 @@ Important outputs may include:
 
 ```text
 analysis/audit_validation.json
+analysis/pipeline_integrity_report.json
 run_metadata.json
 enterprise_documentation.md
 enterprise_documentation.html
@@ -661,7 +844,7 @@ Unsupported or weakly supported claims should be treated as review items.
 
 ---
 
-## 17. Security Model
+## 20. Security Model
 
 DocForge is local-first by design.
 
@@ -691,6 +874,8 @@ authentication
 role foundation
 WebGUI audit log
 optional read-only mode
+defensive session handling
+browser aborted connection handling
 ```
 
 Local-first significantly reduces IP exposure compared with cloud-based documentation workflows. It is not an absolute security guarantee. Local risks still exist.
@@ -712,7 +897,7 @@ For broader enterprise deployment, use additional infrastructure controls.
 
 ---
 
-## 18. Timeout and Local Hardware Considerations
+## 21. Timeout and Local Hardware Considerations
 
 Local models may be slow or inconsistent depending on:
 
@@ -755,7 +940,7 @@ increase chat timeout
 
 ---
 
-## 19. Choosing the Right Profile
+## 22. Choosing the Right Profile
 
 Use this decision model:
 
@@ -785,29 +970,35 @@ I need exact control:
 
 ---
 
-## 20. Recommended First Run
+## 23. Recommended First Runs
 
-For a first real run:
+German output:
 
 ```powershell
-$env:MYCELIA_LOCAL_TOKEN=(python -c "import secrets; print(secrets.token_urlsafe(32))"); docforge-enterprise "D:\docforge_enterprise_new\examples\sample_project.zip" --profile quick --chat-model google_gemma-4-e4b-it --embedding-model text-embedding-nomic-embed-text-v2-moe --embedded-mycelia --analysis-workers 1 --chat-timeout 600 --embedding-timeout 300 --gateway-timeout 180 --max-chars-per-shard 2500 --max-embedding-batch-size 4 --analysis-max-tokens 900 --llm-retries 3 --force-rebuild
+$env:MYCELIA_LOCAL_TOKEN=(python -c "import secrets; print(secrets.token_urlsafe(32))"); docforge-enterprise "D:\docforge_enterprise_new\examples\sample_project.zip" --language de --profile quick --chat-model google_gemma-4-e4b-it --embedding-model text-embedding-nomic-embed-text-v2-moe --embedded-mycelia --analysis-workers 1 --chat-timeout 600 --embedding-timeout 300 --gateway-timeout 180 --max-chars-per-shard 2500 --max-embedding-batch-size 4 --analysis-max-tokens 900 --llm-retries 3 --force-rebuild
+```
+
+English output:
+
+```powershell
+$env:MYCELIA_LOCAL_TOKEN=(python -c "import secrets; print(secrets.token_urlsafe(32))"); docforge-enterprise "D:\docforge_enterprise_new\examples\sample_project.zip" --language en --profile quick --chat-model google_gemma-4-e4b-it --embedding-model text-embedding-nomic-embed-text-v2-moe --embedded-mycelia --analysis-workers 1 --chat-timeout 600 --embedding-timeout 300 --gateway-timeout 180 --max-chars-per-shard 2500 --max-embedding-batch-size 4 --analysis-max-tokens 900 --llm-retries 3 --force-rebuild
 ```
 
 For larger projects:
 
 ```powershell
-$env:MYCELIA_LOCAL_TOKEN=(python -c "import secrets; print(secrets.token_urlsafe(32))"); docforge-enterprise "D:\Pfad\zum\projekt.zip" --profile balanced --chat-model google_gemma-4-e4b-it --embedding-model text-embedding-nomic-embed-text-v2-moe --embedded-mycelia --analysis-workers 1 --chat-timeout 600 --embedding-timeout 300 --gateway-timeout 180 --max-chars-per-shard 2500 --max-embedding-batch-size 4 --analysis-max-tokens 900 --llm-retries 3 --force-rebuild
+$env:MYCELIA_LOCAL_TOKEN=(python -c "import secrets; print(secrets.token_urlsafe(32))"); docforge-enterprise "D:\Pfad\zum\projekt.zip" --language en --profile balanced --chat-model google_gemma-4-e4b-it --embedding-model text-embedding-nomic-embed-text-v2-moe --embedded-mycelia --analysis-workers 1 --chat-timeout 600 --embedding-timeout 300 --gateway-timeout 180 --max-chars-per-shard 2500 --max-embedding-batch-size 4 --analysis-max-tokens 900 --llm-retries 3 --force-rebuild
 ```
 
 For deep enterprise analysis:
 
 ```powershell
-$env:MYCELIA_LOCAL_TOKEN=(python -c "import secrets; print(secrets.token_urlsafe(32))"); docforge-enterprise "D:\Pfad\zum\projekt.zip" --profile enterprise --chat-model google_gemma-4-e4b-it --embedding-model text-embedding-nomic-embed-text-v2-moe --embedded-mycelia --analysis-workers 1 --chat-timeout 600 --embedding-timeout 300 --gateway-timeout 180 --max-chars-per-shard 2500 --max-embedding-batch-size 4 --analysis-max-tokens 900 --llm-retries 3 --force-rebuild
+$env:MYCELIA_LOCAL_TOKEN=(python -c "import secrets; print(secrets.token_urlsafe(32))"); docforge-enterprise "D:\Pfad\zum\projekt.zip" --language en --profile enterprise --chat-model google_gemma-4-e4b-it --embedding-model text-embedding-nomic-embed-text-v2-moe --embedded-mycelia --analysis-workers 1 --chat-timeout 600 --embedding-timeout 300 --gateway-timeout 180 --max-chars-per-shard 2500 --max-embedding-batch-size 4 --analysis-max-tokens 900 --llm-retries 3 --force-rebuild
 ```
 
 ---
 
-## 21. Operational Limits
+## 24. Operational Limits
 
 DocForge documents what it can observe.
 
@@ -836,7 +1027,7 @@ approve final documentation through a human workflow
 
 ---
 
-## 22. Summary
+## 25. Summary
 
 DocForge Enterprise turns source code into structured, evidence-oriented documentation through a local, multi-stage analysis pipeline.
 
@@ -846,9 +1037,12 @@ It provides:
 language-aware sharding
 embedding-based retrieval
 local LLM analysis
+pipeline integrity checks
 file and module reduction
 profile-controlled rendering
-WebGUI and CLI operation
+multilingual output
+secure WebGUI and CLI operation
+authentication and CSRF protection
 audit artifacts
 local-first security posture
 claim and evidence validation foundations
