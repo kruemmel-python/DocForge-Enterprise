@@ -1,4 +1,5 @@
 # DocForge Enterprise — System Intelligence & Audit Model
+<img width="853" height="480" alt="DocForge_Enterprise_Blueprint" src="https://github.com/user-attachments/assets/377e4a0d-1e4c-4807-8584-8825a57230f3" />
 
 DocForge Enterprise is a local-first framework for generating professional, evidence-oriented software documentation from source code projects, ZIP archives, Markdown code dumps and local repositories.
 
