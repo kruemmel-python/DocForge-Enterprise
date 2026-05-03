@@ -4,20 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "docforge-enterprise"
-version = "0.5.0"
-description = "Enterprise documentation generator for ZIP projects and Markdown code dumps using LM Studio, MyceliaDB and SMQL embeddings."
+version = "5.0.1"
+description = "Local-first enterprise documentation generator with LM Studio, embedded MyceliaDB, audit validation and hardened WebGUI."
 readme = "README.md"
 requires-python = ">=3.12"
-license = {text = "MIT"}
-authors = [{name = "PyForge Genesis"}]
-keywords = ["enterprise-documentation", "lm-studio", "myceliadb", "smql", "rag", "code-analysis"]
-dependencies = [
-  "numpy>=1.26",
-]
+dependencies = ["numpy>=1.26"]
 
 [project.optional-dependencies]
-dev = ["pytest>=8.0", "ruff>=0.4", "mypy>=1.8"]
-native = ["pyopencl>=2024.1"]
+dev = ["pytest>=8.0"]
 
 [project.scripts]
 docforge-enterprise = "docforge_enterprise.cli:main"
@@ -25,22 +19,6 @@ dfe = "docforge_enterprise.cli:main"
 docforge-webgui = "docforge_enterprise.webgui:main"
 dfe-web = "docforge_enterprise.webgui:main"
 embedded-myceliadb = "myceliadb_embedded.cli:main"
-myceliadb-embedded = "myceliadb_embedded.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
-
-[tool.setuptools.package-data]
-docforge_enterprise = ["py.typed"]
-
-[tool.ruff]
-line-length = 100
-target-version = "py312"
-
-[tool.mypy]
-python_version = "3.12"
-ignore_missing_imports = true
-warn_unused_ignores = true
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
