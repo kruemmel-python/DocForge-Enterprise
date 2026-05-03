@@ -1,9 +1,11 @@
+
 # DocForge Enterprise
 
 **DocForge Enterprise** is a local-first enterprise documentation platform for software projects. It generates professional, evidence-oriented technical documentation from ZIP archives, Markdown code dumps, and local source directories by combining semantic code indexing, local LLM analysis, MyceliaDB-backed retrieval, and a hardened WebGUI.
 
 DocForge is designed for environments where source code, architecture knowledge, and intellectual property must remain under local control.
-
+---
+<img width="2752" height="1536" alt="info" src="https://github.com/user-attachments/assets/c3fe3387-8374-465b-8940-92d871679abb" />
 ---
 
 ## Core Capabilities
