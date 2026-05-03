@@ -1,0 +1,73 @@
+{
+  "project_name": "test",
+  "input": ".docforge_webgui\\jobs\\c12fe0de1d8b\\input\\sample_project.zip",
+  "workspace": ".docforge_webgui\\jobs\\c12fe0de1d8b\\workspace",
+  "started_at": 1777825879.0426443,
+  "finished_at": 1777826632.9404285,
+  "duration_seconds": 753.898,
+  "profile": "quick",
+  "selected_chapters": [
+    "Executive Summary",
+    "Systemüberblick",
+    "Sicherheitsbetrachtung",
+    "Anhang: Dateiübersicht und Evidenz"
+  ],
+  "work_estimate": {
+    "profile": "quick",
+    "single_pass_final": true,
+    "disable_module_reduce": true,
+    "files": 3,
+    "shards": 4,
+    "modules": 2,
+    "chapters": 4,
+    "estimated_shard_analysis_calls": 4,
+    "estimated_file_reduce_calls": 3,
+    "estimated_module_reduce_calls": 0,
+    "estimated_chapter_render_calls": 1,
+    "estimated_embedding_ingest_batches": 1,
+    "estimated_retrieval_embedding_calls": 5,
+    "estimated_llm_chat_calls": 8,
+    "estimated_embedding_calls": 6
+  },
+  "stats": {
+    "files_seen": 3,
+    "files_indexed": 3,
+    "files_skipped": 0,
+    "shards_created": 4,
+    "shards_analyzed": 4,
+    "retrieval_events": 5,
+    "llm_failures": 0,
+    "json_repairs": 0,
+    "timeouts": 0,
+    "adaptive_shard_retries": 0,
+    "checkpoint_writes": 5,
+    "embedding_failures": 0,
+    "estimated_llm_chat_calls": 8,
+    "estimated_embedding_calls": 6,
+    "actual_llm_chat_calls": 8,
+    "actual_embedding_calls": 6
+  },
+  "ingest_results": [
+    {
+      "collection": "docforge_code",
+      "count": 4,
+      "merkle_head": "f980dbb099d6677603d3a1a326b0699938ddcff75e51406f069521caa6f258cb",
+      "mycelia_status": "ok",
+      "status": "ok",
+      "batch_start": 0
+    }
+  ],
+  "lmstudio": {
+    "base_url": "http://127.0.0.1:1234/v1",
+    "chat_model": "google_gemma-4-e4b-it",
+    "embedding_model": "text-embedding-nomic-embed-text-v2-moe"
+  },
+  "mycelia": {
+    "enabled": true,
+    "base_url": "http://127.0.0.1:9999",
+    "vault_path": ".docforge_webgui\\jobs\\c12fe0de1d8b\\workspace\\mycelia_vault",
+    "collection_prefix": "docforge",
+    "search_backend": "auto",
+    "sealed_mode": "auto"
+  }
+}

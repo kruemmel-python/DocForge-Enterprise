@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Enterprise-Dokumentation: test</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, sans-serif; margin: 3rem; line-height: 1.55; }
+    pre { white-space: pre-wrap; background: #f6f8fa; padding: 1rem; border-radius: 12px; }
+  </style>
+</head>
+<body>
+<pre># Enterprise-Dokumentation: test
+
+&gt; Automatisch generiert durch DocForge Enterprise.
+
+## Dokument-Metadaten
+
+```json
+{
+  &quot;project_name&quot;: &quot;test&quot;,
+  &quot;input&quot;: &quot;.docforge_webgui\\jobs\\c12fe0de1d8b\\input\\sample_project.zip&quot;,
+  &quot;workspace&quot;: &quot;.docforge_webgui\\jobs\\c12fe0de1d8b\\workspace&quot;,
+  &quot;started_at&quot;: 1777825879.0426443,
+  &quot;finished_at&quot;: 1777826632.9404285,
+  &quot;duration_seconds&quot;: 753.898,
+  &quot;profile&quot;: &quot;quick&quot;,
+  &quot;selected_chapters&quot;: [
+    &quot;Executive Summary&quot;,
+    &quot;Systemüberblick&quot;,
+    &quot;Sicherheitsbetrachtung&quot;,
+    &quot;Anhang: Dateiübersicht und Evidenz&quot;
+  ],
+  &quot;work_estimate&quot;: {
+    &quot;profile&quot;: &quot;quick&quot;,
+    &quot;single_pass_final&quot;: true,
+    &quot;disable_module_reduce&quot;: true,
+    &quot;files&quot;: 3,
+    &quot;shards&quot;: 4,
+    &quot;modules&quot;: 2,
+    &quot;chapters&quot;: 4,
+    &quot;estimated_shard_analysis_calls&quot;: 4,
+    &quot;estimated_file_reduce_calls&quot;: 3,
+    &quot;estimated_module_reduce_calls&quot;: 0,
+    &quot;estimated_chapter_render_calls&quot;: 1,
+    &quot;estimated_embedding_ingest_batches&quot;: 1,
+    &quot;estimated_retrieval_embedding_calls&quot;: 5,
+    &quot;estimated_llm_chat_calls&quot;: 8,
+    &quot;estimated_embedding_calls&quot;: 6
+  },
+  &quot;stats&quot;: {
+    &quot;files_seen&quot;: 3,
+    &quot;files_indexed&quot;: 3,
+    &quot;files_skipped&quot;: 0,
+    &quot;shards_created&quot;: 4,
+    &quot;shards_analyzed&quot;: 4,
+    &quot;retrieval_events&quot;: 5,
+    &quot;llm_failures&quot;: 0,
+    &quot;json_repairs&quot;: 0,
+    &quot;timeouts&quot;: 0,
+    &quot;adaptive_shard_retries&quot;: 0,
+    &quot;checkpoint_writes&quot;: 5,
+    &quot;embedding_failures&quot;: 0,
+    &quot;estimated_llm_chat_calls&quot;: 8,
+    &quot;estimated_embedding_calls&quot;: 6,
+    &quot;actual_llm_chat_calls&quot;: 8,
+    &quot;actual_embedding_calls&quot;: 6
+  },
+  &quot;ingest_results&quot;: [
+    {
+      &quot;collection&quot;: &quot;docforge_code&quot;,
+      &quot;count&quot;: 4,
+      &quot;merkle_head&quot;: &quot;f980dbb099d6677603d3a1a326b0699938ddcff75e51406f069521caa6f258cb&quot;,
+      &quot;mycelia_status&quot;: &quot;ok&quot;,
+      &quot;status&quot;: &quot;ok&quot;,
+      &quot;batch_start&quot;: 0
+    }
+  ],
+  &quot;lmstudio&quot;: {
+    &quot;base_url&quot;: &quot;http://127.0.0.1:1234/v1&quot;,
+    &quot;chat_model&quot;: &quot;google_gemma-4-e4b-it&quot;,
+    &quot;embedding_model&quot;: &quot;text-embedding-nomic-embed-text-v2-moe&quot;
+  },
+  &quot;mycelia&quot;: {
+    &quot;enabled&quot;: true,
+    &quot;base_url&quot;: &quot;http://127.0.0.1:9999&quot;,
+    &quot;vault_path&quot;: &quot;.docforge_webgui\\jobs\\c12fe0de1d8b\\workspace\\mycelia_vault&quot;,
+    &quot;collection_prefix&quot;: &quot;docforge&quot;,
+    &quot;search_backend&quot;: &quot;auto&quot;,
+    &quot;sealed_mode&quot;: &quot;auto&quot;
+  }
+}
+```
+
+# Enterprise Architecture Documentation: Projekt &quot;test&quot; (Quick / Single-Pass Profil)
+
+---
+
+## Executive Summary
+
+Dieses Dokument bietet eine kompakte technische Übersicht des Projekts &quot;test&quot;. Das System ist primär als ein **Sample Project** konzipiert, das die grundlegende Funktionalität der Token-Ausstellung demonstriert. Die Architektur basiert auf zwei Kernkomponenten: `src/app.py` (als Anwendungseinstiegspunkt) und `src/auth.py` (zur Implementierung der Authentifizierungslogik).
+
+**Zusammenfassend:** Das System stellt einen einfachen Mechanismus zur Generierung von Tokens basierend auf einem Benutzernamen bereit. **Es ist kritisch festzuhalten, dass die aktuelle Implementierung in `src/auth.py` nur eine Platzhalterfunktion darstellt und keinerlei kryptografische oder robuste Sicherheitsgarantien bietet.**
+
+## Systemüberblick
+
+Das Projekt &quot;test&quot; dient als kleines Beispiel für DocForge Enterprise (`README.md`). Die Kernfunktionalität wird durch das Zusammenspiel von `src/app.py` und `src/auth.py` realisiert.
+
+### Architektur-Komponenten:
+
+*   **`src/auth.py`**: Dieses Modul ist verantwortlich für die Token-Generierung. Es definiert die öffentliche Schnittstelle `issue_token(user: str) -&gt; str`.
+    *   **Funktionsweise:** Die Funktion validiert, ob der Eingabeparameter `user` nicht leer ist; andernfalls wird ein `ValueError` ausgelöst (Evidenz: `src/auth.py`, Span 0-128). Bei gültiger Eingabe wird ein formatierter String zurückgegeben (z.B. `&quot;token-for-{user}&quot;`).
+*   **`src/app.py`**: Dieses Modul fungiert als primärer Anwendungseinstiegspunkt (`main(user: str) -&gt; str`). Es orchestriert den Prozess, indem es die `issue_token`-Funktion aus `src.auth` aufruft (Evidenz: `src/app.py`, Span 0-31).
+
+### Hauptflüsse:
+
+Der primäre Datenfluss ist sequenziell:
+1.  Aufruf von `main(user: str)` in `src/app.py`.
+2.  `main` ruft `issue_token(user)` aus `src.auth.py` auf (Evidenz: `src/app.py`, Span 31-88).
+3.  `src/auth.py` generiert und gibt den Token zurück, sofern der Benutzername gültig ist.
+
+## Sicherheitsbetrachtung
+
+Die Sicherheit des Systems weist erhebliche Mängel auf, die durch die aktuelle Implementierung in `src/auth.py` bedingt sind.
+
+### Identifizierte Risiken und Technische Schulden:
+
+1.  **Fehlende Kryptografische Sicherheit (Kritisch):** Das generierte Token (`&quot;token-for-{user}&quot;`) bietet **keinerlei Authentifizierungs- oder Autorisierungsgarantien**. Dies ist ein technischer Schuldpunkt, da die Implementierung in `src/auth.py` explizit als Platzhalter beschrieben wird (Evidenz: `src/auth.py`, Risiken).
+2.  **Unvollständige Fehlerbehandlung:** In `src/app.py` fehlt eine explizite Fehlerbehandlung für den Fall, dass `issue_token` einen `ValueError` wirft (z.B. wenn der Benutzername leer ist), was zu einem ungefangenen Absturz führen kann (Evidenz: `src/app.py`, Risiken).
+3.  **Token-Validierung:** Die Sicherheit hängt vollständig von der Implementierung in `src/auth.py` ab, welche derzeit nur eine Formatierung durchführt und keine tatsächliche Sicherheitsprüfung darstellt (Evidenz: `src/auth.py`, Security Notes).
+
+### Unsicherheiten:
+
+*   **Unsicherheit:** Es ist nicht spezifiziert, ob die Argumente in `src/app.py` vor dem Aufruf von `issue_token` validiert werden, um einen korrekten Betrieb zu gewährleisten (Evidenz: `src/app.py`, Risiken).
+*   Die Rolle des Projekts als &quot;Sample Project&quot; impliziert, dass es sich nicht für den produktiven Einsatz eignet und die Sicherheitsanforderungen sind daher nur exemplarisch dargestellt.
+
+## Anhang: Dateiübersicht und Evidenz
+
+| Dateiname | Zweck / Beschreibung | Wichtigste Schnittstelle(n) | Kritische Hinweise (Risiken/Schulden) |
+| :--- | :--- | :--- | :--- |
+| `README.md` | Dokumentation des &quot;Sample Project&quot; für DocForge Enterprise. | N/A | Liefert nur oberflächliche Metadaten; keine tiefgehenden technischen Informationen. |
+| `src/app.py` | Haupt-Entrypoint, orchestriert den Aufruf der Token-Generierung. | `main(user: str) -&gt; str` | **Risiko:** Fehlende Fehlerbehandlung bei Ausnahmen aus `src.auth`. |
+| `src/auth.py` | Implementiert die Kernlogik zur Token-Erstellung. | `issue_token(user: str) -&gt; str` | **Schuld:** Die Funktion ist ein Platzhalter; bietet keine kryptografische Sicherheit (Evidenz: `src/auth.py`, Security Notes). |
+
+### Detaillierte Evidenzbelege
+
+**1. `README.md`**
+*   **Claim:** Das Projekt wird als &quot;Sample Project&quot; bezeichnet und dient als kleines Beispiel für DocForge Enterprise.
+    *   **Evidenz:** `README.md` (Span 0-56)
+
+**2. `src/app.py`**
+*   **Claim:** Der Haupt-Entrypoint ruft die Funktion `issue_token` aus dem Modul `src.auth` auf.
+    *   **Evidenz:** `src/app.py` (Span 0-31)
+*   **Claim:** Die Funktion `main` akzeptiert einen Benutzerstring und gibt einen String zurück, der das Ergebnis von `issue_token` ist.
+    *   **Evidenz:** `src/app.py` (Span 31-88)
+
+**3. `src/auth.py`**
+*   **Claim:** Die Funktion `issue_token` akzeptiert einen Benutzerstring und gibt einen Token-String zurück, wobei sie bei fehlendem Benutzer einen `ValueError` auslöst.
+    *   **Evidenz:** `src/auth.py` (Span 0-128)
+</pre>
+</body>
+</html>
