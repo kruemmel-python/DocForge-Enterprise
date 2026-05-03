@@ -4,8 +4,6 @@
 
 DocForge Enterprise v5.0.0 ist ein technisch ambitioniertes und bereits sehr fortgeschrittenes **local-first Framework für LLM-gestützte Software-Dokumentation**. Seine größte Stärke liegt nicht in einfacher Textgenerierung, sondern im mehrstufigen, auditierbaren Analysemodell aus Sharding, Embeddings, Retrieval, Datei- und Modulreduktion sowie profilgesteuerter Dokumentationserzeugung.
 
-Die Bewertung von Gemini trifft den Kern der Architektur weitgehend richtig. Einige Aussagen sind jedoch zu absolut formuliert und sollten für eine belastbare Enterprise-Bewertung präziser eingeordnet werden.
-
 ---
 
 ## 1. Architektur-Tiefe und Prozesslogik
